@@ -1,15 +1,20 @@
 import ingest
 import persist
+import logging
 class DriverProgram:
-    def __init__(self):
-        print('init of driver class')
+    logging.basicConfig(level="DEBUG")
+    def __init__(self,fileType):
+        self.file_Type=fileType
+        logging.debug('init of driverprogram')
     def my_function(self):
-        print("you are in driver function")
+        logging.debug("you are in driver my_function")
+        logging.debug(f"Processing filetype:{self.file_Type}")
+        reader = ingest.FileReader(self.file_Type)
+        reader.read_file()
+        writer = persist.PersistData("postgres")
+        writer.store_date()
 
 
-driver=DriverProgram()
+driver=DriverProgram("csv")
 driver.my_function()
-reader=ingest.FileReader()
-reader.read_file()
-writer=persist.PersistData()
-writer.store_date()
+

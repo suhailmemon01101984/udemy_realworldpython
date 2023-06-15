@@ -1,8 +1,9 @@
 import ingest
 import persist
 import logging
+import logging.config
 class DriverProgram:
-    logging.basicConfig(level="DEBUG")
+    logging.config.fileConfig("resources/configs/logging.conf")
     def __init__(self,fileType):
         self.file_Type=fileType
         logging.debug('init of driverprogram')

@@ -1,6 +1,7 @@
 import logging
+import logging.config
 class PersistData:
-    logging.basicConfig(level="DEBUG")
+    logging.config.fileConfig("resources/configs/logging.conf")
     def __init__(self,dbType):
         logging.debug("init of persistdata")
         self.db_Type=dbType

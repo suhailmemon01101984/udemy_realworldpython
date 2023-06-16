@@ -13,7 +13,7 @@ class DriverProgram:
         reader = ingest.FileReader(self.file_Type)
         reader.read_file()
         writer = persist.PersistData("postgres")
-        writer.store_date()
+        writer.store_data()
 
 
 driver=DriverProgram("csv")

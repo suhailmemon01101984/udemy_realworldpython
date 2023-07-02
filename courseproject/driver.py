@@ -1,5 +1,4 @@
-import ingest
-import persist
+from processor import ingest, persist
 import logging
 import logging.config
 class DriverProgram:

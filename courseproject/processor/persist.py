@@ -3,7 +3,7 @@ import logging.config
 import configparser
 import psycopg2
 class PersistData:
-    logging.config.fileConfig("resources/configs/logging.conf")
+    logging.config.fileConfig("../resources/configs/logging.conf")
     logger=logging.getLogger("Persist")
     config=configparser.ConfigParser()
     config.read("resources/fileprocessor.ini")

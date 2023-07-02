@@ -38,7 +38,7 @@ class PersistData:
         insert_query=f"insert into {targettable} \
                         (course_id, course_name, author_name, course_section, creation_date) \
                         values(%s,%s,%s,%s,%s)"
-        insert_tuple=(4,'Java Microservices', 'futurexskill', '{}','2020-10-20')
+        insert_tuple=(5,'Scala', 'futurexskill', '{}','2020-10-20')
         print("Inserting into pg")
         curs.execute(insert_query,insert_tuple)
         curs.close()

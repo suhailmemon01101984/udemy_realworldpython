@@ -1,4 +1,4 @@
 import driverclass
 
-driver=driverclass.driver()
-driver.driver_func()
+dr=driverclass.driver()
+dr.driver_func()

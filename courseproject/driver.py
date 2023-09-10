@@ -2,7 +2,7 @@ from processor import ingest, persist
 import logging
 import logging.config
 class DriverProgram:
-    logging.config.fileConfig("resources/configs/logging.conf")
+    logging.config.fileConfig("processor/resources/configs/logging.conf")
     def __init__(self,fileType):
         self.file_Type=fileType
         logging.debug('init of driverprogram')
@@ -10,11 +10,12 @@ class DriverProgram:
         logging.debug("you are in driver my_function")
         logging.debug(f"Processing filetype:{self.file_Type}")
         reader = ingest.FileReader(self.file_Type)
-        reader.read_file()
+        read_json=reader.read_file()
+        print(f"read the json: {read_json}")
         writer = persist.PersistData("postgres")
-        writer.store_data()
+        writer.store_data(read_json)
 
 
-driver=DriverProgram("csv")
+driver=DriverProgram("json")
 driver.my_function()
 

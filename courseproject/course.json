@@ -1,0 +1,6 @@
+{
+  "author_name": "futurex",
+  "course": "new course",
+  "course_section": {"section1":"value1","section2":"value2"},
+  "creation_date": "2021-03-28"
+}

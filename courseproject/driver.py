@@ -4,7 +4,7 @@ import logging.config
 from flask import Flask, request
 
 myapp=Flask(__name__)
-@myapp.route('/courses',methods=['GET'])
+@myapp.route('/getcourses',methods=['GET'])
 def get_courses():
     pd=persist.PersistData("postgres")
     allrecords=pd.read_from_pg("futurexschema.futurex_course_catalog")

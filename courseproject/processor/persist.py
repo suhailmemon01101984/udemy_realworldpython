@@ -34,6 +34,7 @@ class PersistData:
             print("printed one new record")
         curs.close()
         connection.commit()
+        return records
 
     def write_to_pg(self,targettable):
         connection=psycopg2.connect(user='postgres',password='admin',host='localhost',database='postgres')

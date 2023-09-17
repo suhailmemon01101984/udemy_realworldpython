@@ -1,6 +1,17 @@
 from processor import ingest, persist
 import logging
 import logging.config
+from flask import Flask, request
+
+myapp=Flask(__name__)
+@myapp.route('/courses',methods=['GET'])
+def get_courses():
+    pd=persist.PersistData("postgres")
+    allrecords=pd.read_from_pg("futurexschema.futurex_course_catalog")
+    return f"courses are - {allrecords}"
+
+
+
 class DriverProgram:
     logging.config.fileConfig("processor/resources/configs/logging.conf")
     def __init__(self,fileType):
@@ -16,6 +27,7 @@ class DriverProgram:
         writer.store_data(read_json)
 
 
-driver=DriverProgram("json")
-driver.my_function()
+#driver=DriverProgram("json")
+#driver.my_function()
 
+myapp.run(port=8005, debug=True)

@@ -6,10 +6,17 @@ from flask import Flask, request
 myapp=Flask(__name__)
 @myapp.route('/getcourses',methods=['GET'])
 def get_courses():
-    pd=persist.PersistData("postgres")
-    allrecords=pd.read_from_pg("futurexschema.futurex_course_catalog")
+    pd1=persist.PersistData("postgres")
+    allrecords=pd1.read_from_pg("futurexschema.futurex_course_catalog")
     return f"courses are - {allrecords}"
 
+@myapp.route('/insertcourse',methods=['POST'])
+def insert_course():
+    input_json=request.get_json(force=True)
+    print(f"input json is: {input_json}")
+    pd2=persist.PersistData("postgres")
+    pd2.write_to_pg_from_json("futurexschema.futurex_course_catalog",input_json)
+    return "success"
 
 
 class DriverProgram:
